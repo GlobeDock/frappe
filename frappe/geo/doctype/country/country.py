@@ -17,6 +17,7 @@ class Country(Document):
 		code: DF.Data | None
 		country_name: DF.Data
 		date_format: DF.Data | None
+		globedock_destination: DF.Literal["", "Yes", "No"]
 		time_format: DF.Data | None
 		time_zones: DF.Text | None
 	# end: auto-generated types

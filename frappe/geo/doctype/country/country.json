@@ -12,7 +12,8 @@
   "date_format",
   "time_format",
   "time_zones",
-  "code"
+  "code",
+  "globedock_destination"
  ],
  "fields": [
   {
@@ -49,12 +50,18 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Code"
+  },
+  {
+   "fieldname": "globedock_destination",
+   "fieldtype": "Select",
+   "label": "GlobeDock Destination",
+   "options": "\nYes\nNo"
   }
  ],
  "icon": "fa fa-globe",
  "idx": 1,
  "links": [],
- "modified": "2022-08-05 18:33:27.880783",
+ "modified": "2024-04-25 02:48:09.724795",
  "modified_by": "Administrator",
  "module": "Geo",
  "name": "Country",

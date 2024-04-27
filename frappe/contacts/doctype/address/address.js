@@ -3,6 +3,7 @@
 
 frappe.ui.form.on("Address", {
 	refresh: function (frm) {
+		console.log (frm)
 		if (frm.doc.__islocal) {
 			const last_doc = frappe.contacts.get_last_doc(frm);
 			if (
