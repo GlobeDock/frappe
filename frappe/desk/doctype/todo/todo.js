@@ -10,11 +10,19 @@ frappe.ui.form.on("ToDo", {
 			};
 		});
 	},
-	refresh: function (frm) {
+	refresh: async function (frm) {
 		if (frm.doc.reference_type && frm.doc.reference_name) {
-			frm.add_custom_button(__(frm.doc.reference_name), function () {
-				frappe.set_route("Form", frm.doc.reference_type, frm.doc.reference_name);
-			});
+			if (frm.doc.reference_type === 'Student') {
+				student = await frappe.db.get_doc (frm.doc.reference_type, frm.doc.reference_name)
+				frm.add_custom_button(__(student.full_name), function () {
+					frappe.set_route("Form", frm.doc.reference_type, frm.doc.reference_name);
+				});
+			}
+			else {
+				frm.add_custom_button(__(frm.doc.reference_name), function () {
+					frappe.set_route("Form", frm.doc.reference_type, frm.doc.reference_name);
+				});
+			}
 		}
 
 		if (!frm.doc.__islocal) {
