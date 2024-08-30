@@ -300,7 +300,7 @@ def get_link_for_qrcode(user, totp_uri):
 	frappe.cache.set_value(key_user, user, expires_in_sec=lifespan)
 	return get_url(f"/qrcode?k={key}")
 
-
+@frappe.whitelist ()
 def send_token_via_sms(otpsecret, token=None, phone_no=None):
 	"""Send token as sms to user."""
 	try:

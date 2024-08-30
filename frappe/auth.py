@@ -454,7 +454,7 @@ def validate_ip_address(user):
 
 	frappe.throw(_("Access not allowed from this IP Address"), frappe.AuthenticationError)
 
-
+@frappe.whitelist()
 def get_login_attempt_tracker(key: str, raise_locked_exception: bool = True):
 	"""Get login attempt tracker instance.
 

@@ -71,12 +71,12 @@ class Event(Document):
 		starts_on: DF.Datetime
 		status: DF.Literal["Open", "Completed", "Closed", "Cancelled"]
 		subject: DF.SmallText
+		subject_followup: DF.Literal["Test", "Intro"]
 		sunday: DF.Check
 		sync_with_google_calendar: DF.Check
 		thursday: DF.Check
 		tuesday: DF.Check
 		wednesday: DF.Check
-
 	# end: auto-generated types
 	def validate(self):
 		if not self.starts_on:
