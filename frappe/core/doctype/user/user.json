@@ -43,6 +43,7 @@
   "bio",
   "column_break_22",
   "mobile_no",
+  "is_email_verified",
   "settings_tab",
   "desk_settings_section",
   "mute_sounds",
@@ -717,6 +718,12 @@
    "fieldname": "workspace_section",
    "fieldtype": "Section Break",
    "label": "Workspace"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_email_verified",
+   "fieldtype": "Check",
+   "label": "User Email Verified?"
   }
  ],
  "icon": "fa fa-user",
@@ -779,7 +786,7 @@
    "link_fieldname": "user"
   }
  ],
- "modified": "2024-03-20 17:15:19.200383",
+ "modified": "2024-08-22 20:41:17.372239",
  "modified_by": "Administrator",
  "module": "Core",
  "name": "User",
@@ -813,6 +820,7 @@
  "route": "user",
  "search_fields": "full_name",
  "show_name_in_global_search": 1,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

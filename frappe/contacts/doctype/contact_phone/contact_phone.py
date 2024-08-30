@@ -20,5 +20,6 @@ class ContactPhone(Document):
 		parentfield: DF.Data
 		parenttype: DF.Data
 		phone: DF.Data
+		relation: DF.Data | None
 	# end: auto-generated types
 	pass

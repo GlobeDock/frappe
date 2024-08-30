@@ -79,6 +79,7 @@ class User(Document):
 		gender: DF.Link | None
 		home_settings: DF.Code | None
 		interest: DF.SmallText | None
+		is_email_verified: DF.Check
 		language: DF.Link | None
 		last_active: DF.Datetime | None
 		last_ip: DF.ReadOnly | None
@@ -353,13 +354,13 @@ class User(Document):
 						_update_password(
 							user=self.name, pwd=new_password, logout_all_sessions=self.logout_all_sessions
 						)
-
-					if not self.flags.no_welcome_mail and cint(self.send_welcome_email):
-						self.send_welcome_mail_to_user()
-						self.flags.email_sent = 1
-						if frappe.session.user != "Guest":
-							msgprint(_("Welcome email sent"))
-						return
+					if not (self.flags.mobile_signup):
+						if not self.flags.no_welcome_mail and cint(self.send_welcome_email):
+							self.send_welcome_mail_to_user()
+							self.flags.email_sent = 1
+							if frappe.session.user != "Guest":
+								msgprint(_("Welcome email sent"))
+							return
 			else:
 				self.email_new_password(new_password)
 

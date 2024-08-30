@@ -19,5 +19,6 @@ class ContactEmail(Document):
 		parent: DF.Data
 		parentfield: DF.Data
 		parenttype: DF.Data
+		relation: DF.Data | None
 	# end: auto-generated types
 	pass

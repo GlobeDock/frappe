@@ -7,7 +7,8 @@
  "field_order": [
   "phone",
   "is_primary_phone",
-  "is_primary_mobile_no"
+  "is_primary_mobile_no",
+  "relation"
  ],
  "fields": [
   {
@@ -33,11 +34,16 @@
    "fieldtype": "Check",
    "in_list_view": 1,
    "label": "Is Primary Mobile"
+  },
+  {
+   "fieldname": "relation",
+   "fieldtype": "Data",
+   "label": "Relation"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2020-04-06 18:28:10.486220",
+ "modified": "2024-08-19 15:19:03.547585",
  "modified_by": "Administrator",
  "module": "Contacts",
  "name": "Contact Phone",
@@ -46,5 +52,6 @@
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }
