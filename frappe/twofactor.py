@@ -229,7 +229,7 @@ def process_2fa_for_otp_app(user, otp_secret, otp_issuer):
 	return {"method": "OTP App", "setup": otp_setup_completed}
 
 
-def process_2fa_for_email(user, token, otp_secret, otp_issuer, method="Email"):
+def process_2fa_for_email(user, token, otp_secret, otp_issuer, method="Email", email_verification=False):
 	"""Process Email method for 2fa."""
 	subject = None
 	message = None
@@ -247,7 +247,7 @@ def process_2fa_for_email(user, token, otp_secret, otp_issuer, method="Email"):
 	else:
 		"""Sending email verification"""
 		prompt = _("Verification code has been sent to your registered email address.")
-	status = send_token_via_email(user, token, otp_secret, otp_issuer, subject=subject, message=message)
+	status = send_token_via_email(user, token, otp_secret, otp_issuer, subject=subject, message=message, email_verification=email_verification)
 	return {
 		"token_delivery": status,
 		"prompt": status and prompt,
@@ -256,21 +256,35 @@ def process_2fa_for_email(user, token, otp_secret, otp_issuer, method="Email"):
 	}
 
 
-def get_email_subject_for_2fa(kwargs_dict):
+def get_email_subject_for_2fa(kwargs_dict, email_verification=False):
 	"""Get email subject for 2fa."""
-	subject_template = _("Login Verification Code from {}").format(
-		frappe.db.get_single_value("System Settings", "otp_issuer_name")
-	)
+	subject_template = None
+	if (email_verification):
+		subject_template = _("Email Verification Code from {}").format(
+			frappe.db.get_single_value("System Settings", "otp_issuer_name")
+		)
+	else:
+		subject_template = _("Login Verification Code from {}").format(
+			frappe.db.get_single_value("System Settings", "otp_issuer_name")
+		)
 	return frappe.render_template(subject_template, kwargs_dict)
 
 
-def get_email_body_for_2fa(kwargs_dict):
+def get_email_body_for_2fa(kwargs_dict, email_verification=False):
 	"""Get email body for 2fa."""
-	body_template = """
-		Enter this code to complete your login:
-		<br><br>
-		<b style="font-size: 18px;">{{ otp }}</b>
-	"""
+	body_template = None
+	if (email_verification):
+		body_template = """
+			Enter this code to complete your Email Verification:
+			<br><br>
+			<b style="font-size: 18px;">{{ otp }}</b>
+		"""
+	else:
+		body_template = """
+			Enter this code to complete your login:
+			<br><br>
+			<b style="font-size: 18px;">{{ otp }}</b>
+		"""
 	return frappe.render_template(body_template, kwargs_dict)
 
 
@@ -337,7 +351,7 @@ def send_token_via_sms(otpsecret, token=None, phone_no=None):
 	return True
 
 
-def send_token_via_email(user, token, otp_secret, otp_issuer, subject=None, message=None):
+def send_token_via_email(user, token, otp_secret, otp_issuer, subject=None, message=None, email_verification=False):
 	"""Send token to user as email."""
 	user_email = frappe.db.get_value("User", user, "email")
 	if not user_email:
@@ -346,9 +360,9 @@ def send_token_via_email(user, token, otp_secret, otp_issuer, subject=None, mess
 	otp = hotp.at(int(token))
 	template_args = {"otp": otp, "otp_issuer": otp_issuer}
 	if not subject:
-		subject = get_email_subject_for_2fa(template_args)
+		subject = get_email_subject_for_2fa(template_args, email_verification)
 	if not message:
-		message = get_email_body_for_2fa(template_args)
+		message = get_email_body_for_2fa(template_args, email_verification)
 
 	email_args = {
 		"recipients": user_email,
