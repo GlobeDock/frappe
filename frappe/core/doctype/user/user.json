@@ -9,6 +9,7 @@
  "field_order": [
   "user_details_tab",
   "enabled",
+  "disabled_reason",
   "section_break_3",
   "email",
   "first_name",
@@ -724,6 +725,14 @@
    "fieldname": "is_email_verified",
    "fieldtype": "Check",
    "label": "User Email Verified?"
+  },
+  {
+   "default": "Incomplete Signup",
+   "depends_on": "eval:!doc.enabled",
+   "fieldname": "disabled_reason",
+   "fieldtype": "Select",
+   "label": "Disabled Reason",
+   "options": "Incomplete Signup\nBanned"
   }
  ],
  "icon": "fa fa-user",
@@ -786,7 +795,7 @@
    "link_fieldname": "user"
   }
  ],
- "modified": "2024-08-22 20:41:17.372239",
+ "modified": "2024-09-10 04:25:27.671169",
  "modified_by": "Administrator",
  "module": "Core",
  "name": "User",
