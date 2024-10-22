@@ -33,6 +33,8 @@ class ToDo(Document):
 		role: DF.Link | None
 		sender: DF.Data | None
 		status: DF.Literal["Open", "Closed", "Cancelled"]
+		task_closed_date: DF.Datetime | None
+		task_start_date: DF.Datetime | None
 	# end: auto-generated types
 	DocType = "ToDo"
 
