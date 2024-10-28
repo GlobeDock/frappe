@@ -14,8 +14,18 @@
   "address_line2",
   "city",
   "county",
-  "state",
   "country",
+  "usa_states",
+  "emirates",
+  "uk_states",
+  "canada_states",
+  "france_states",
+  "turkey_states",
+  "german_states",
+  "hungary_states",
+  "south_korean_states",
+  "philipene_states",
+  "state",
   "pincode",
   "column_break0",
   "email_id",
@@ -72,6 +82,7 @@
   {
    "fieldname": "county",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "County"
   },
   {
@@ -145,12 +156,82 @@
    "fieldtype": "Table",
    "label": "Links",
    "options": "Dynamic Link"
+  },
+  {
+   "depends_on": "eval:doc.country === 'United States'",
+   "fieldname": "usa_states",
+   "fieldtype": "Select",
+   "label": "USA States",
+   "options": "\nAlabama\nAlaska\nArizona\nArkansas\nCalifornia\nColorado\nConnecticut\nDelaware\nFlorida\nGeorgia\nHawaii\nIdaho\nIllinois\nIndiana\nIowa\nKansas\nKentucky\nLouisiana\nMaine\nMaryland\nMassachusetts\nMichigan\nMinnesota\nMississippi\nMissouri\nMontana\nNebraska\nNevada\nNew Hampshire\nNew Jersey\nNew Mexico\nNew York\nNorth Carolina\nNorth Dakota\nOhio\nOklahoma\nOregon\nPennsylvania\nRhode Island\nSouth Carolina\nSouth Dakota\nTennessee\nTexas\nUtah\nVermont\nVirginia\nWashington\nWest Virginia\nWisconsin\nWyoming"
+  },
+  {
+   "depends_on": "eval:doc.country === 'United Kingdom'",
+   "fieldname": "uk_states",
+   "fieldtype": "Select",
+   "label": "UK States",
+   "options": "\nEngland\nScotland\nWales"
+  },
+  {
+   "depends_on": "eval:doc.country === 'Canada'",
+   "fieldname": "canada_states",
+   "fieldtype": "Select",
+   "label": "Canada States",
+   "options": "\nAlberta\nBritish Columbia\nManitoba\nNew Brunswick\nNewfoundland and Labrador\nNova Scotia\nOntario\nPrince Edward Island\nQuebec\nSaskatchewan"
+  },
+  {
+   "depends_on": "eval:doc.country === 'France'",
+   "fieldname": "france_states",
+   "fieldtype": "Select",
+   "label": "France States",
+   "options": "\nAuvergne-Rh\u221a\u00a5ne-Alpes\nBourgogne-Franche-Comt\u221a\u00a9\nBrittany\nCentre-Val de Loire\nCorsica\nGrand Est\nHauts-de-France\n\u221a\u00e9le-de-France\nNormandy\nNouvelle-Aquitaine\nOccitanie\nPays de la Loire\nProvence-Alpes-C\u221a\u00a5te d'Azur"
+  },
+  {
+   "depends_on": "eval:doc.country === 'Turkey'",
+   "fieldname": "turkey_states",
+   "fieldtype": "Select",
+   "label": "Turkey States",
+   "options": "\nAdana\nAnkara\nAntalya\nBursa\nIstanbul\nIzmir\nKayseri\nKocaeli\nMersin\nSamsun\nTrabzon"
+  },
+  {
+   "depends_on": "eval:doc.country === 'Germany'",
+   "fieldname": "german_states",
+   "fieldtype": "Select",
+   "label": "German States",
+   "options": "\nBaden-W\u221a\u00barttemberg\nBavaria\nBerlin\nBrandenburg\nBremen\nHamburg\nHesse\nLower Saxony\nMecklenburg-Vorpommern\nNorth Rhine-Westphalia\nRhineland-Palatinate\nSaarland\nSaxony\nSaxony-Anhalt\nSchleswig-Holstein\nThuringia"
+  },
+  {
+   "depends_on": "eval:doc.country === 'Hungary'",
+   "fieldname": "hungary_states",
+   "fieldtype": "Select",
+   "label": "Hungary States",
+   "options": "\nB\u221a\u00b0cs-Kiskun\nBaranya\nB\u221a\u00a9k\u221a\u00a9s\nBorsod-Aba\u221a\u222bj-Zempl\u221a\u00a9n\nCsongr\u221a\u00b0d-Csan\u221a\u00b0d\nFej\u221a\u00a9r\nGy\u2248\u00ebr-Moson-Sopron\nHajd\u221a\u222b-Bihar\nHeves\nJ\u221a\u00b0sz-Nagykun-Szolnok\nKom\u221a\u00b0rom-Esztergom\nN\u221a\u2265gr\u221a\u00b0d\nPest\nSomogy\nSzabolcs-Szatm\u221a\u00b0r-Bereg\nTolna\nVas\nVeszpr\u221a\u00a9m\nZala"
+  },
+  {
+   "depends_on": "eval:doc.country === 'South Korea'",
+   "fieldname": "south_korean_states",
+   "fieldtype": "Select",
+   "label": "South Korean States",
+   "options": "\nBusan\nChungbuk\nChungnam\nDaegu\nDaejeon\nGangwon\nGwangju\nGyeongbuk\nGyeonggi\nGyeongnam\nIncheon\nJeju\nJeonbuk\nJeonnam\nSejong\nSeoul\nUlsan"
+  },
+  {
+   "depends_on": "eval:doc.country === 'Philippines'",
+   "fieldname": "philipene_states",
+   "fieldtype": "Select",
+   "label": "Philipene States",
+   "options": "\nAbra\nAgusan del Norte\nAgusan del Sur\nAklan\nAlbay\nAntique\nApayao\nAurora\nBasilan\nBataan\nBatanes\nBatangas\nBenguet\nBiliran\nBohol\nBukidnon\nBulacan\nCagayan\nCamarines Norte\nCamarines Sur\nCamiguin\nCapiz\nCatanduanes\nCavite\nCebu\nCompostela Valley\nCotabato\nDavao del Norte\nDavao del Sur\nDavao Occidental\nDavao Oriental\nDinagat Islands\nEastern Samar\nGuimaras\nIfugao\nIlocos Norte\nIlocos Sur\nIloilo\nIsabela\nKalinga\nLa Union\nLaguna\nLanao del Norte\nLanao del Sur\nLeyte\nMaguindanao\nMarinduque\nMasbate\nMisamis Occidental\nMisamis Oriental\nMountain Province\nNegros Occidental\nNegros Oriental\nNorthern Samar\nNueva Ecija\nNueva Vizcaya\nOccidental Mindoro\nOriental Mindoro\nPalawan\nPampanga\nPangasinan\nQuezon\nQuirino\nRizal\nRomblon\nSamar\nSarangani\nSiquijor\nSorsogon\nSouth Cotabato\nSouthern Leyte\nSultan Kudarat\nSulu\nSurigao del Norte\nSurigao del Sur\nTarlac\nTawi-Tawi\nZambales\nZamboanga del Norte\nZamboanga del Sur\nZamboanga Sibugay"
+  },
+  {
+   "depends_on": "eval:doc.country === 'United Arab Emirates'",
+   "fieldname": "emirates",
+   "fieldtype": "Select",
+   "label": "Emirate",
+   "options": "\nAbu Dhabi\nAjman\nDubai\nFujairah\nRas Al Khaimah\nSharjah\nUmm Al Quwain"
   }
  ],
  "icon": "fa fa-map-marker",
  "idx": 5,
  "links": [],
- "modified": "2024-05-25 03:12:04.383620",
+ "modified": "2024-10-26 04:14:16.608264",
  "modified_by": "Administrator",
  "module": "Contacts",
  "name": "Address",
