@@ -54,7 +54,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Address Type",
-   "options": "Billing\nCampus\nOffice\nPersonal\nCurrent\nPermanent\nOther\nBranch",
+   "options": "\nBilling\nCampus\nOffice\nPersonal\nCurrent\nPermanent\nOther\nBranch",
    "reqd": 1
   },
   {
@@ -169,7 +169,7 @@
    "fieldname": "uk_states",
    "fieldtype": "Select",
    "label": "UK States",
-   "options": "\nEngland\nScotland\nWales"
+   "options": "\nEngland\nScotland\nWales\nNorthern Ireland"
   },
   {
    "depends_on": "eval:doc.country === 'Canada'",
@@ -231,7 +231,7 @@
  "icon": "fa fa-map-marker",
  "idx": 5,
  "links": [],
- "modified": "2024-10-26 04:14:16.608264",
+ "modified": "2024-11-03 18:51:45.390884",
  "modified_by": "Administrator",
  "module": "Contacts",
  "name": "Address",
