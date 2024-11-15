@@ -109,7 +109,7 @@ class File(Document):
 			self.create_attachment_record()
 		self.set_is_private()
 		self.set_file_name()
-		self.validate_duplicate_entry()
+		# self.validate_duplicate_entry()
 
 	def validate(self):
 		if self.is_folder:
