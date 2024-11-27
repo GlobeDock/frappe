@@ -403,9 +403,12 @@ class File(Document):
 				_("Fields `file_name` or `file_url` must be set for File"), exc=frappe.MandatoryError
 			)
 		elif not self.file_name and self.file_url:
+			print ("testing condition 1")
 			self.file_name = self.file_url.split("/")[-1]
 		else:
+			print ("testing condition 2")
 			self.file_name = re.sub(r"/", "", self.file_name)
+			print (self.file_name)
 
 	def generate_content_hash(self):
 		if self.content_hash or not self.file_url or self.is_remote_file:
@@ -634,19 +637,19 @@ class File(Document):
 		self.content_hash = get_content_hash(self._content)
 
 		# check if a file exists with the same content hash and is also in the same folder (public or private)
-		if not ignore_existing_file_check:
-			duplicate_file = frappe.get_value(
-				"File",
-				{"content_hash": self.content_hash, "is_private": self.is_private},
-				["file_url", "name"],
-				as_dict=True,
-			)
+		# if not ignore_existing_file_check:
+		# 	duplicate_file = frappe.get_value(
+		# 		"File",
+		# 		{"content_hash": self.content_hash, "is_private": self.is_private},
+		# 		["file_url", "name"],
+		# 		as_dict=True,
+		# 	)
 
-		if duplicate_file:
-			file_doc: "File" = frappe.get_cached_doc("File", duplicate_file.name)
-			if file_doc.exists_on_disk():
-				self.file_url = duplicate_file.file_url
-				file_exists = True
+		# if duplicate_file:
+		# 	file_doc: "File" = frappe.get_cached_doc("File", duplicate_file.name)
+		# 	if file_doc.exists_on_disk():
+		# 		self.file_url = duplicate_file.file_url
+		# 		file_exists = True
 
 		if not file_exists:
 			if not overwrite:
