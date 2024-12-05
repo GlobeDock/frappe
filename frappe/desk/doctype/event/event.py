@@ -62,6 +62,7 @@ class Event(Document):
 		google_meet_link: DF.Data | None
 		monday: DF.Check
 		pulled_from_google_calendar: DF.Check
+		remark: DF.SmallText | None
 		repeat_on: DF.Literal["", "Daily", "Weekly", "Monthly", "Yearly"]
 		repeat_this_event: DF.Check
 		repeat_till: DF.Date | None

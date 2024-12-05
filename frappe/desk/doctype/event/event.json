@@ -10,6 +10,7 @@
  "field_order": [
   "details",
   "subject",
+  "remark",
   "subject_followup",
   "event_category",
   "event_type",
@@ -299,12 +300,18 @@
    "hidden": 1,
    "label": "Subject Followup",
    "options": "Test\nIntro"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "label": "Remark",
+   "mandatory_depends_on": "eval:doc.status === 'Closed'"
   }
  ],
  "icon": "fa fa-calendar",
  "idx": 1,
  "links": [],
- "modified": "2024-05-27 15:23:15.093493",
+ "modified": "2024-12-01 23:28:51.327594",
  "modified_by": "Administrator",
  "module": "Desk",
  "name": "Event",
