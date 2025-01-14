@@ -304,14 +304,14 @@
   {
    "fieldname": "remark",
    "fieldtype": "Small Text",
-   "label": "Remark",
+   "label": "Interaction Summary",
    "mandatory_depends_on": "eval:doc.status === 'Closed'"
   }
  ],
  "icon": "fa fa-calendar",
  "idx": 1,
  "links": [],
- "modified": "2024-12-01 23:28:51.327594",
+ "modified": "2024-12-14 20:28:03.342667",
  "modified_by": "Administrator",
  "module": "Desk",
  "name": "Event",

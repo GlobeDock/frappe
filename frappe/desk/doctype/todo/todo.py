@@ -26,7 +26,7 @@ class ToDo(Document):
 		assignment_rule: DF.Link | None
 		color: DF.Color | None
 		date: DF.Datetime | None
-		description: DF.TextEditor
+		description: DF.SmallText
 		priority: DF.Literal["High", "Medium", "Low"]
 		reference_name: DF.DynamicLink | None
 		reference_type: DF.Link | None
@@ -35,6 +35,9 @@ class ToDo(Document):
 		status: DF.Literal["Open", "Closed", "Cancelled"]
 		task_closed_date: DF.Datetime | None
 		task_start_date: DF.Datetime | None
+		todo_data: DF.Data | None
+		todo_from: DF.Data | None
+		todo_trigger: DF.Data | None
 	# end: auto-generated types
 	DocType = "ToDo"
 
